@@ -4,6 +4,7 @@ import UberAppTim24.pages.HomePage;
 import UberAppTim24.pages.LogInPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
@@ -17,10 +18,10 @@ public class LogInTest extends TestBase
     public static String validPassword = "admin";
     public static String wrongMail = "Relja";
     public static String wrongPassword = "Radeka";
-    private WebElement profilePicture;
+    private WebElement profilePicture = new RemoteWebElement();
     private WebElement logOutButton;
 
-    //@Test
+    @Test(priority = 1)
     public void noInput()
     {
         HomePage home = new HomePage(driver);
@@ -32,7 +33,7 @@ public class LogInTest extends TestBase
         assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
     }
 
-    //@Test
+    @Test(priority = 2)
     public void noPassword()
     {
         HomePage home = new HomePage(driver);
@@ -45,7 +46,7 @@ public class LogInTest extends TestBase
         assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
     }
 
-    //@Test
+    @Test(priority = 3)
     public void noMail()
     {
         HomePage home = new HomePage(driver);
@@ -58,7 +59,7 @@ public class LogInTest extends TestBase
         assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
     }
 
-    //@Test
+    @Test(priority = 4)
     public void wrongMail()
     {
         HomePage home = new HomePage(driver);
@@ -72,7 +73,7 @@ public class LogInTest extends TestBase
         assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
     }
 
-    //@Test
+    @Test(priority = 5)
     public void wrongPassword()
     {
         HomePage home = new HomePage(driver);
@@ -86,8 +87,9 @@ public class LogInTest extends TestBase
         assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
     }
 
-    @Test
-    public void valid() throws InterruptedException {
+    @Test(priority = 6)
+    public void valid() throws InterruptedException
+    {
         HomePage home = new HomePage(driver);
         home.clickOnPrijavaButton();
 
@@ -99,11 +101,5 @@ public class LogInTest extends TestBase
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Thread.sleep(2000);
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
-
-        profilePicture.findElement(By.className("actual-image"));
-        profilePicture.click();
-        //logOutButton.findElement(By.id("logOut"));
-        //logOutButton.click();
-
     }
 }

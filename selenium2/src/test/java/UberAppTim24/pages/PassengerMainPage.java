@@ -28,6 +28,12 @@ public class PassengerMainPage
 
     @FindBy(id = "estimate-cost")
     private WebElement estimateCost;
+    
+    @FindBy(id="profile-pic-nav")
+    private WebElement profilePicMenu;
+    
+    @FindBy(id="logout-option")
+    private WebElement logoutOption;
 
 
     public PassengerMainPage(WebDriver driver)
@@ -72,5 +78,11 @@ public class PassengerMainPage
     public void waitForEstimateToShow() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(estimateCost));
     }
-
+    
+    public void clickOnProfileIcon() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(profilePicMenu)).click();
+    }
+    public void clickOnLogoutOption() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(logoutOption)).click();
+    }
 }

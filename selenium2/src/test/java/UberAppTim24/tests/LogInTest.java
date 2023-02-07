@@ -101,6 +101,8 @@ public class LogInTest extends TestBase
         logIn.enterPassword(validPassword);
         logIn.clickLogInButton();
 
+        PassengerMainPage passengerMainPage = new PassengerMainPage(driver);
+        passengerMainPage.waitForPageToOpen();
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
 
         passengerMainPage.clickOnProfileIcon();

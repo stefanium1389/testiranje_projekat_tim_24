@@ -2,10 +2,13 @@ package UberAppTim24.tests;
 
 import UberAppTim24.pages.HomePage;
 import UberAppTim24.pages.LogInPage;
+import UberAppTim24.pages.PassengerMainPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -18,8 +21,8 @@ public class LogInTest extends TestBase
     public static String validPassword = "admin";
     public static String wrongMail = "Relja";
     public static String wrongPassword = "Radeka";
-    private WebElement profilePicture = new RemoteWebElement();
-    private WebElement logOutButton;
+    @FindBy(className = "actual-image")
+    private WebElement profilePicture;
 
     @Test(priority = 1)
     public void noInput()
@@ -98,8 +101,8 @@ public class LogInTest extends TestBase
         logIn.enterPassword(validPassword);
         logIn.clickLogInButton();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Thread.sleep(2000);
+        PassengerMainPage passengerMainPage = new PassengerMainPage(driver);
+        passengerMainPage.waitForPageToOpen();
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
     }
 }

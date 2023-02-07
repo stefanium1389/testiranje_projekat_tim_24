@@ -2,18 +2,20 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-12-18T15:10:18Z" name="Default suite" finished-at="2022-12-18T15:10:26Z" duration-ms="8153">
+  <suite started-at="2023-02-07T23:35:55Z" name="Default suite" finished-at="2023-02-07T23:36:11Z" duration-ms="16534">
     <groups>
     </groups>
-    <test started-at="2022-12-18T15:10:18Z" name="Default test" finished-at="2022-12-18T15:10:26Z" duration-ms="8153">
-      <class name="example.cookbook.ExplicitWaitExample">
-        <test-method is-config="true" signature="initalize()[pri:0, instance:example.cookbook.ExplicitWaitExample@3eb81efb]" started-at="2022-12-18T15:10:18Z" name="initalize" finished-at="2022-12-18T15:10:19Z" duration-ms="1104" status="PASS">
-        </test-method> <!-- initalize -->
-        <test-method signature="dynamicContent2()[pri:0, instance:example.cookbook.ExplicitWaitExample@3eb81efb]" started-at="2022-12-18T15:10:19Z" name="dynamicContent2" finished-at="2022-12-18T15:10:26Z" duration-ms="6911" status="PASS">
-        </test-method> <!-- dynamicContent2 -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:example.cookbook.ExplicitWaitExample@3eb81efb]" started-at="2022-12-18T15:10:26Z" name="tearDown" finished-at="2022-12-18T15:10:26Z" duration-ms="126" status="PASS">
-        </test-method> <!-- tearDown -->
-      </class> <!-- example.cookbook.ExplicitWaitExample -->
+    <test started-at="2023-02-07T23:35:55Z" name="Default test" finished-at="2023-02-07T23:36:11Z" duration-ms="16534">
+      <class name="UberAppTim24.tests.DriverEndRideTest">
+        <test-method is-config="true" signature="initializeWebDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@df6620a]" started-at="2023-02-07T23:35:54Z" name="initializeWebDriver" finished-at="2023-02-07T23:35:55Z" duration-ms="950" status="PASS">
+        </test-method> <!-- initializeWebDriver -->
+        <test-method is-config="true" signature="loginPassengerMakeRideAndLogoutThenLoginDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@df6620a]" started-at="2023-02-07T23:35:55Z" name="loginPassengerMakeRideAndLogoutThenLoginDriver" finished-at="2023-02-07T23:36:01Z" duration-ms="6072" status="PASS">
+        </test-method> <!-- loginPassengerMakeRideAndLogoutThenLoginDriver -->
+        <test-method signature="endRideHappyFlowTest()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@df6620a]" started-at="2023-02-07T23:36:01Z" name="endRideHappyFlowTest" finished-at="2023-02-07T23:36:11Z" duration-ms="10455" status="PASS">
+        </test-method> <!-- endRideHappyFlowTest -->
+        <test-method is-config="true" signature="quitDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@df6620a]" started-at="2023-02-07T23:36:11Z" name="quitDriver" finished-at="2023-02-07T23:36:11Z" duration-ms="0" status="PASS">
+        </test-method> <!-- quitDriver -->
+      </class> <!-- UberAppTim24.tests.DriverEndRideTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

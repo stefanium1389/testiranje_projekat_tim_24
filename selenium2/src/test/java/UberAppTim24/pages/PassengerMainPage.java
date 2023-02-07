@@ -28,6 +28,12 @@ public class PassengerMainPage
 
     @FindBy(id = "estimate-cost")
     private WebElement estimateCost;
+    
+    @FindBy(id="profile-pic-nav")
+    private WebElement profilePicMenu;
+    
+    @FindBy(id="logout-option")
+    private WebElement logoutOption;
 
     @FindBy(id = "withdraw-ride-button")
     private WebElement withdrawRideButton;
@@ -79,7 +85,6 @@ public class PassengerMainPage
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(estimateCost));
     }
 
-
     public void waitForWithdrawToShow() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(withdrawRideButton));
     }
@@ -93,6 +98,14 @@ public class PassengerMainPage
     {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(firstMinusIcon));
         firstMinusIcon.click();
+    }
+
+    
+    public void clickOnProfileIcon() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(profilePicMenu)).click();
+    }
+    public void clickOnLogoutOption() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(logoutOption)).click();
     }
 
 }

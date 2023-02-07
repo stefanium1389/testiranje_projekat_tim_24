@@ -48,6 +48,11 @@ public class PassengerStartRideTest extends TestBase
             org.testng.Assert.fail("Timeout!");
         }
         passengerMain.clickBeginButton();
+        try {
+            passengerMain.waitForWithdrawToShow();
+        } catch (TimeoutException ex) {
+            org.testng.Assert.fail("Timeout!");
+        }
 
 
     }

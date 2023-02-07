@@ -4,11 +4,13 @@ import UberAppTim24.pages.HomePage;
 import UberAppTim24.pages.LogInPage;
 import UberAppTim24.pages.PassengerMainPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -87,7 +89,15 @@ public class LogInTest extends TestBase
         logIn.enterPassword(wrongPassword);
         logIn.clickLogInButton();
 
-        assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
+        try {
+            logIn.waitForSnackBarToAppear();
+        }
+        catch (TimeoutException ex)
+        {
+            Assert.fail("Timeout!");
+        }
+
+        assertEquals(logIn.getSnackBarText(),"Bad credentials");
     }
 
     @Test(priority = 6)
@@ -100,6 +110,8 @@ public class LogInTest extends TestBase
         logIn.enterMail(validMail);
         logIn.enterPassword(validPassword);
         logIn.clickLogInButton();
+
+
 
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
     }

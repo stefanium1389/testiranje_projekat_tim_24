@@ -99,7 +99,6 @@ public class PassengerMainPage
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(firstMinusIcon));
         firstMinusIcon.click();
     }
-
     
     public void clickOnProfileIcon() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(profilePicMenu)).click();

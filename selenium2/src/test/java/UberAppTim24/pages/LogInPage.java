@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LogInPage
 {
@@ -19,6 +21,9 @@ public class LogInPage
 
     @FindBy(id = "logInButton")
     private WebElement logInButton;
+
+    @FindBy(css = ".mat-simple-snack-bar-content")
+    private WebElement snackBar;
 
     public LogInPage(WebDriver driver)
     {
@@ -44,4 +49,14 @@ public class LogInPage
     {
         logInButton.click();
     }
+
+    public void waitForSnackBarToAppear() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(snackBar));
+    }
+
+    public String getSnackBarText()
+    {
+        return snackBar.getText();
+    }
+
 }

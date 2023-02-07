@@ -4,10 +4,14 @@ import UberAppTim24.pages.HomePage;
 import UberAppTim24.pages.LogInPage;
 import UberAppTim24.pages.PassengerMainPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.Assert.*;
 
 public class PassengerStartRideTest extends TestBase
 {
@@ -15,8 +19,8 @@ public class PassengerStartRideTest extends TestBase
     public static String passengerPassword = "admin";
 
 
-    @Test(priority = 1)
-    public void passengerLoginTest()
+    @BeforeMethod
+    public void passengerLogin()
     {
         HomePage home = new HomePage(driver);
         home.clickOnPrijavaButton();
@@ -26,11 +30,10 @@ public class PassengerStartRideTest extends TestBase
         logIn.enterPassword(passengerPassword);
         logIn.clickLogInButton();
 
-        System.out.println("LogIn prosho!");
     }
 
 
-    @Test (priority = 2)
+    @Test
     public void createRideTest()
     {
         PassengerMainPage passengerMain = new PassengerMainPage(driver);
@@ -39,10 +42,22 @@ public class PassengerStartRideTest extends TestBase
         passengerMain.searchStartLocation();
         passengerMain.enterEndLocation("petrovaradin");
         passengerMain.searchEndLocation();
-        passengerMain.waitForEstimateToShow();
+        try {
+            passengerMain.waitForEstimateToShow();
+        } catch (TimeoutException ex) {
+            org.testng.Assert.fail("Timeout!");
+        }
         passengerMain.clickBeginButton();
 
-        
 
+    }
+
+    @AfterMethod
+    public void cancelRide()
+    {
+        PassengerMainPage passengerMain = new PassengerMainPage(driver);
+        passengerMain.waitForWithdrawToShow();
+        passengerMain.clickWithdraw();
+        passengerMain.removeFirstLinkedUser();
     }
 }

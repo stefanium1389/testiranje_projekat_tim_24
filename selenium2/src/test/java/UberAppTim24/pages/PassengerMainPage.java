@@ -29,6 +29,12 @@ public class PassengerMainPage
     @FindBy(id = "estimate-cost")
     private WebElement estimateCost;
 
+    @FindBy(id = "withdraw-ride-button")
+    private WebElement withdrawRideButton;
+
+    @FindBy(css = "i.fa.fa-minus")
+    WebElement firstMinusIcon;
+
 
     public PassengerMainPage(WebDriver driver)
     {
@@ -71,6 +77,22 @@ public class PassengerMainPage
 
     public void waitForEstimateToShow() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(estimateCost));
+    }
+
+
+    public void waitForWithdrawToShow() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(withdrawRideButton));
+    }
+
+    public void clickWithdraw()
+    {
+        withdrawRideButton.click();
+    }
+
+    public void removeFirstLinkedUser()
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(firstMinusIcon));
+        firstMinusIcon.click();
     }
 
 }

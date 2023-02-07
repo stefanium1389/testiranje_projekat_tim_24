@@ -5,6 +5,8 @@ import UberAppTim24.pages.LogInPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -97,6 +99,8 @@ public class LogInTest extends TestBase
         logIn.clickLogInButton();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement helloWorld = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#finish>h4")));
         Thread.sleep(2000);
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
 

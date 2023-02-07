@@ -1,4 +1,4 @@
-package example.tests;
+package UberAppTim24.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +22,6 @@ public class TestBase {
 
     @AfterSuite
     public void quitDriver() {
-        driver.quit();
+        //driver.quit();
     }
 }

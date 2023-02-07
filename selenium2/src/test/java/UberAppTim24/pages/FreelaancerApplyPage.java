@@ -1,4 +1,4 @@
-package example.pages;
+package UberAppTim24.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

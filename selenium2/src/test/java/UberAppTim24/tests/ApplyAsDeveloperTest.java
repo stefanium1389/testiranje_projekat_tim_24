@@ -1,8 +1,8 @@
-package example.tests;
+package UberAppTim24.tests;
 
-import example.helper.Helper;
-import example.pages.FreelaancerApplyPage;
-import example.pages.HomePage;
+import UberAppTim24.helper.Helper;
+import UberAppTim24.pages.FreelaancerApplyPage;
+import UberAppTim24.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,7 +19,7 @@ public class ApplyAsDeveloperTest extends TestBase {
     public void applyAsDeveloper() {
         //Create object of HomePage Class
         HomePage home = new HomePage(driver);
-        home.clickOnFreelancerApplyButton();
+        home.clickOnPrijavaButton();
 
         //Create object of FreelancerApplyPage
         FreelaancerApplyPage applyPage = new FreelaancerApplyPage(driver);

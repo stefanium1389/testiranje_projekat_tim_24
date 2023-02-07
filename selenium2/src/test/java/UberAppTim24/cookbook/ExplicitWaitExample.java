@@ -1,4 +1,4 @@
-package example.cookbook;
+package UberAppTim24.cookbook;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +17,8 @@ public class ExplicitWaitExample {
 	private WebDriver driver;
 
 	@BeforeMethod
-	public void initalize() {
-
+	public void initialize()
+	{
 		// Create a Selenium WebDriver instance
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		driver = new ChromeDriver();

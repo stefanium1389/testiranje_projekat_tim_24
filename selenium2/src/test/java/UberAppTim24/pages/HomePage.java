@@ -1,4 +1,4 @@
-package example.pages;
+package UberAppTim24.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
     private WebDriver driver;
 
-    private static String PAGE_URL="https://www.toptal.com";
+    private static String PAGE_URL="http://localhost:4200";
 
-    @FindBy(how = How.LINK_TEXT, using = "Apply as a Freelancer")
-    private WebElement freelancerApplyButton;
+    @FindBy(id = "prijava")
+    private WebElement prijavaButton;
 
     public HomePage(WebDriver driver){
         this.driver=driver;
@@ -23,8 +23,8 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickOnFreelancerApplyButton(){
+    public void clickOnPrijavaButton(){
         (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.elementToBeClickable(freelancerApplyButton)).click();
+                .until(ExpectedConditions.elementToBeClickable(prijavaButton)).click();
     }
 }

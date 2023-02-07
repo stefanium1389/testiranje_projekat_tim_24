@@ -11,7 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.Assert.*;
+
+import static org.testng.Assert.*;
 
 public class PassengerStartRideTest extends TestBase
 {
@@ -34,7 +35,7 @@ public class PassengerStartRideTest extends TestBase
 
 
     @Test
-    public void createRideTest()
+    public void simpleCreateRideTest()
     {
         PassengerMainPage passengerMain = new PassengerMainPage(driver);
         passengerMain.waitForPageToOpen();
@@ -48,12 +49,14 @@ public class PassengerStartRideTest extends TestBase
             org.testng.Assert.fail("Timeout!");
         }
         passengerMain.clickBeginButton();
+        passengerMain.waitForSnackbarToAppear();
+        assertEquals(passengerMain.getSnackBarText(),"uspešno kreirana vožnja!");
+
         try {
             passengerMain.waitForWithdrawToShow();
         } catch (TimeoutException ex) {
             org.testng.Assert.fail("Timeout!");
         }
-
 
     }
 

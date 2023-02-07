@@ -41,6 +41,9 @@ public class PassengerMainPage
     @FindBy(css = "i.fa.fa-minus")
     WebElement firstMinusIcon;
 
+    @FindBy(css = ".mat-simple-snack-bar-content")
+    private WebElement snackBar;
+
 
     public PassengerMainPage(WebDriver driver)
     {
@@ -105,6 +108,16 @@ public class PassengerMainPage
     }
     public void clickOnLogoutOption() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(logoutOption)).click();
+    }
+
+    public void waitForSnackbarToAppear()
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(snackBar));
+    }
+
+    public String getSnackBarText()
+    {
+        return snackBar.getText();
     }
 
 }

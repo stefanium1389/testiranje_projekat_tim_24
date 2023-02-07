@@ -102,5 +102,9 @@ public class LogInTest extends TestBase
         logIn.clickLogInButton();
 
         assertEquals("http://localhost:4200/user-home", driver.getCurrentUrl());
+
+        passengerMainPage.clickOnProfileIcon();
+        passengerMainPage.clickOnLogoutOption();
+        driver.quit();
     }
 }

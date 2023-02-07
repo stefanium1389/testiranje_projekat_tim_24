@@ -42,7 +42,6 @@ public class PassengerStartRideTest extends TestBase
         passengerMain.waitForEstimateToShow();
         passengerMain.clickBeginButton();
 
-        
-
     }
+    
 }

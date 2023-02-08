@@ -33,7 +33,6 @@ public class PassengerStartRideTest extends TestBase
 
     }
 
-
     @Test
     public void simpleCreateRideTest()
     {
@@ -58,13 +57,77 @@ public class PassengerStartRideTest extends TestBase
             org.testng.Assert.fail("Timeout!");
         }
 
+        cancelRide();
     }
 
-    @AfterMethod
+    @Test
+    public void selectLocationsByClickingOnMapTest()
+    {
+        PassengerMainPage passengerMain = new PassengerMainPage(driver);
+
+        passengerMain.waitForMapToBeClickable();
+        passengerMain.clickLocationOnMap(200,-200);
+        passengerMain.waitForStartInputToGetAddress();
+        passengerMain.clickLocationTypeOptions("Odredište");
+        passengerMain.clickLocationOnMap(300,-100);
+        passengerMain.waitForEndInputToGetAddress();
+
+
+        try {
+            passengerMain.waitForEstimateToShow();
+        } catch (TimeoutException ex) {
+            org.testng.Assert.fail("Timeout!");
+        }
+        passengerMain.clickBeginButton();
+        passengerMain.waitForSnackbarToAppear();
+        assertEquals(passengerMain.getSnackBarText(),"uspešno kreirana vožnja!");
+
+        try {
+            passengerMain.waitForWithdrawToShow();
+        } catch (TimeoutException ex) {
+            org.testng.Assert.fail("Timeout!");
+        }
+
+
+        cancelRide();
+    }
+
+    @Test
+    public void addFavouriteRideTest()
+    {
+        PassengerMainPage passengerMain = new PassengerMainPage(driver);
+        passengerMain.waitForMapToBeClickable();
+        passengerMain.clickLocationOnMap(200,-200);
+        passengerMain.waitForStartInputToGetAddress();
+        passengerMain.clickLocationTypeOptions("Odredište");
+        passengerMain.clickLocationOnMap(300,-100);
+        passengerMain.waitForEndInputToGetAddress();
+
+        try {
+            passengerMain.waitForFavouriteIcon();
+        } catch (TimeoutException ex) {
+            org.testng.Assert.fail("Timeout!");
+        }
+        passengerMain.clickOnAddFavourite();
+        passengerMain.waitForDialogInput();
+        passengerMain.typeInDialogInput("xd");
+        passengerMain.acceptDialog();
+        passengerMain.waitForSnackbarToAppear();
+        assertEquals(passengerMain.getSnackBarText(),"Ruta dodata u omiljene!");
+
+    }
+
+
     public void cancelRide()
     {
         PassengerMainPage passengerMain = new PassengerMainPage(driver);
-        passengerMain.waitForWithdrawToShow();
+        try {
+            passengerMain.waitForWithdrawToShow();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         passengerMain.clickWithdraw();
         passengerMain.removeFirstLinkedUser();
     }

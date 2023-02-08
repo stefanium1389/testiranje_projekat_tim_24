@@ -1,10 +1,16 @@
 package UberAppTim24.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PassengerMainPage
@@ -41,8 +47,21 @@ public class PassengerMainPage
     @FindBy(css = "i.fa.fa-minus")
     WebElement firstMinusIcon;
 
+    @FindBy(css = "i.fa.fa-star-o")
+    WebElement favouriteIcon;
+
     @FindBy(css = ".mat-simple-snack-bar-content")
     private WebElement snackBar;
+
+    @FindBy(id ="map")
+    private WebElement map;
+
+    @FindBy(id= "dialog-input-text")
+    private WebElement dialogInput;
+
+    @FindBy(id= "dialog-accept-button")
+    private WebElement dialogAcceptButton;
+
 
 
     public PassengerMainPage(WebDriver driver)
@@ -80,15 +99,15 @@ public class PassengerMainPage
         beginButton.click();
     }
 
-    public void waitForPageToOpen() {
+    public void waitForPageToOpen() throws TimeoutException {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(beginButton));
     }
 
-    public void waitForEstimateToShow() {
+    public void waitForEstimateToShow() throws TimeoutException {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(estimateCost));
     }
 
-    public void waitForWithdrawToShow() {
+    public void waitForWithdrawToShow() throws TimeoutException {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(withdrawRideButton));
     }
 
@@ -110,14 +129,76 @@ public class PassengerMainPage
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(logoutOption)).click();
     }
 
-    public void waitForSnackbarToAppear()
+    public void waitForSnackbarToAppear() throws TimeoutException
     {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(snackBar));
+    }
+
+    public void waitForMapToBeClickable() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(map));
     }
 
     public String getSnackBarText()
     {
         return snackBar.getText();
     }
+
+    public void clickLocationOnMap(int x_offset, int y_offset)
+    {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(map, x_offset, y_offset).click().build().perform();
+    }
+
+    public void clickLocationTypeOptions(String text)
+    {
+        Select dropdown = new Select(driver.findElement(By.id("location-type-selection")));
+        dropdown.selectByVisibleText(text);
+    }
+
+    public void waitForStartInputToGetAddress() throws TimeoutException
+    {
+        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                return startLocationInput.getAttribute("value").length() != 0;
+            }
+        });
+    }
+
+    public void waitForEndInputToGetAddress() throws TimeoutException
+    {
+        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                return endLocationInput.getAttribute("value").length() != 0;
+            }
+        });
+    }
+
+    public void waitForFavouriteIcon() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(favouriteIcon));
+    }
+
+    public void clickOnAddFavourite()
+    {
+        favouriteIcon.click();
+    }
+
+    public void waitForDialogInput() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(dialogInput));
+    }
+
+    public void typeInDialogInput(String text)
+    {
+        dialogInput.sendKeys(text);
+    }
+
+    public void acceptDialog()
+    {
+        dialogAcceptButton.click();
+    }
+
+
 
 }

@@ -13,6 +13,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PassengerMainPage
 {
     private WebDriver driver;
@@ -79,6 +82,22 @@ public class PassengerMainPage
 
     @FindBy(css="#pets-checkbox .mat-checkbox-inner-container")
     private WebElement petsCheckbox;
+
+    @FindBy(id = "link-users-button")
+    private WebElement linkUsersButton;
+
+    @FindBy(id = "search-user-input")
+    private WebElement searchUsersInput;
+
+    @FindBy(css = "#user-search-submit .mat-button-wrapper")
+    private WebElement userSearchSubmitButton;
+
+    @FindBy(css = ".profil-pregled")
+    private WebElement profileCard;
+
+    @FindBy(css = ".user-result")
+    private WebElement searchResultCard;
+
 
     public PassengerMainPage(WebDriver driver)
     {
@@ -150,6 +169,11 @@ public class PassengerMainPage
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(snackBar));
     }
 
+    public void waitForSnackbarToDisappear() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(".mat-simple-snack-bar-content"),0));
+    }
+
     public void waitForMapToBeClickable() throws TimeoutException
     {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(map));
@@ -169,6 +193,12 @@ public class PassengerMainPage
     public void clickLocationTypeOptions(String text)
     {
         Select dropdown = new Select(driver.findElement(By.id("location-type-selection")));
+        dropdown.selectByVisibleText(text);
+    }
+
+    public void clickVehicleTypeOptions(String text)
+    {
+        Select dropdown = new Select(driver.findElement(By.id("vehicle-type-selection")));
         dropdown.selectByVisibleText(text);
     }
 
@@ -253,4 +283,64 @@ public class PassengerMainPage
         Actions actions = new Actions(driver);
         actions.moveToElement(petsCheckbox).click().build().perform();
     }
+
+    public void clickOnLinkFriends()
+    {
+        linkUsersButton.click();
+    }
+
+    public void waitForLinkFriendsToShow() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(searchUsersInput));
+    }
+
+    public void clickOnUsersSubmitButton()
+    {
+        userSearchSubmitButton.click();
+    }
+
+
+    public void enterTextToUserInput(String input)
+    {
+        searchUsersInput.sendKeys(input);
+    }
+    public void waitForSearchResultsToShow() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(searchResultCard));
+    }
+
+    public void addFirstFewUsers(int howMany)
+    {
+        List<WebElement> userResults = driver.findElements(By.cssSelector(".user-result"));
+        for (int i=0; i<userResults.size(); i++)
+        {
+            if (i>howMany) break;
+
+            userResults.get(i).click();
+        }
+    }
+
+    public void acceptLinkedUsers()
+    {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(userSearchSubmitButton, -300, 0).click().build().perform();
+    }
+
+    public void waitForLinkedUsersToAppearAgain() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(profileCard));
+    }
+
+    public List<String> getNamesFromLinkedUsers()
+    {
+        List<WebElement> userResults = driver.findElements(By.cssSelector(".profil-pregled"));
+        List<String> list = new ArrayList<>();
+        for (int i=0; i<userResults.size(); i++)
+        {
+            List<WebElement> text = userResults.get(i).findElements(By.tagName("p"));
+            list.add(text.get(0).getText());
+        }
+        return list;
+    }
+
 }

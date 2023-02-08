@@ -3,13 +3,14 @@
 <suite parallel="none" name="Failed suite [Default suite]">
   <test parallel="none" name="Default test(failed)" preserve-order="true">
     <classes>
-      <class name="UberAppTim24.tests.PassengerStartRideTest">
+      <class name="UberAppTim24.tests.DriverEndRideTest">
         <methods>
-          <include name="createRideTest"/>
+          <include name="endRideHappyFlowTest"/>
+          <include name="loginPassengerMakeRideAndLogoutThenLoginDriver"/>
           <include name="initializeWebDriver"/>
           <include name="quitDriver"/>
         </methods>
-      </class> <!-- UberAppTim24.tests.PassengerStartRideTest -->
+      </class> <!-- UberAppTim24.tests.DriverEndRideTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

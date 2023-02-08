@@ -26,6 +26,9 @@ public class PassengerMainPage
     @FindBy(id = "begin-button")
     private WebElement beginButton;
 
+    @FindBy(id = "book-button")
+    private WebElement bookButton;
+
     @FindBy(id = "start-location-search")
     private WebElement startSearchButton;
 
@@ -62,7 +65,20 @@ public class PassengerMainPage
     @FindBy(id= "dialog-accept-button")
     private WebElement dialogAcceptButton;
 
+    @FindBy(id="dialog-time-input")
+    private WebElement dialogTimeInput;
 
+    @FindBy(id="dialog-time-submit")
+    private WebElement dialogTimeSubmit;
+
+    @FindBy(id="display-time")
+    private WebElement displayTimeText;
+
+    @FindBy(css="#baby-checkbox .mat-checkbox-inner-container")
+    private WebElement babyCheckbox;
+
+    @FindBy(css="#pets-checkbox .mat-checkbox-inner-container")
+    private WebElement petsCheckbox;
 
     public PassengerMainPage(WebDriver driver)
     {
@@ -199,6 +215,42 @@ public class PassengerMainPage
         dialogAcceptButton.click();
     }
 
+    public void clickBookButton()
+    {
+        bookButton.click();
+    }
 
+    public void setTime(String hours, String minutes, String amOrPm)
+    {
+        dialogTimeInput.sendKeys(hours);
+        dialogTimeInput.sendKeys(minutes);
+        dialogTimeInput.sendKeys(amOrPm);
+    }
 
+    public void saveTime()
+    {
+        dialogTimeSubmit.click();
+    }
+
+    public void waitForTimeDisplay() throws TimeoutException
+    {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(displayTimeText));
+    }
+
+    public String getTimeDisplayText ()
+    {
+        return displayTimeText.getText();
+    }
+
+    public void clickBabyCheckBox()
+    {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(babyCheckbox).click().build().perform();
+    }
+
+    public void clickPetsCheckBox()
+    {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(petsCheckbox).click().build().perform();
+    }
 }

@@ -79,6 +79,9 @@ public class PassengerMainPage
 
     @FindBy(css="#pets-checkbox .mat-checkbox-inner-container")
     private WebElement petsCheckbox;
+    
+    @FindBy(id="mat-dialog-0")
+    private WebElement endRideRateDialog;
 
     public PassengerMainPage(WebDriver driver)
     {
@@ -253,4 +256,9 @@ public class PassengerMainPage
         Actions actions = new Actions(driver);
         actions.moveToElement(petsCheckbox).click().build().perform();
     }
+
+	public boolean isEndRatingDialogVisible() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(endRideRateDialog));
+        return endRideRateDialog.isDisplayed();
+	}
 }

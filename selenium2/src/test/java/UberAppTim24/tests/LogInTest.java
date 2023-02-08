@@ -23,8 +23,6 @@ public class LogInTest extends TestBase
     public static String validPassword = "admin";
     public static String wrongMail = "Relja";
     public static String wrongPassword = "Radeka";
-    @FindBy(className = "actual-image")
-    private WebElement profilePicture;
 
     @Test(priority = 1)
     public void noInput()
@@ -35,7 +33,16 @@ public class LogInTest extends TestBase
         LogInPage logIn = new LogInPage(driver);
         logIn.clickLogInButton();
 
-        assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
+        try
+        {
+            logIn.waitForSnackBarToAppear();
+        }
+        catch (TimeoutException ex)
+        {
+            Assert.fail("Timeout!");
+        }
+
+        assertEquals(logIn.getSnackBarText(),"Bad credentials");
     }
 
     @Test(priority = 2)
@@ -48,7 +55,16 @@ public class LogInTest extends TestBase
         logIn.enterMail(validMail);
         logIn.clickLogInButton();
 
-        assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
+        try
+        {
+            logIn.waitForSnackBarToAppear();
+        }
+        catch (TimeoutException ex)
+        {
+            Assert.fail("Timeout!");
+        }
+
+        assertEquals(logIn.getSnackBarText(),"Bad credentials");
     }
 
     @Test(priority = 3)
@@ -61,7 +77,16 @@ public class LogInTest extends TestBase
         logIn.enterPassword(validPassword);
         logIn.clickLogInButton();
 
-        assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
+        try
+        {
+            logIn.waitForSnackBarToAppear();
+        }
+        catch (TimeoutException ex)
+        {
+            Assert.fail("Timeout!");
+        }
+
+        assertEquals(logIn.getSnackBarText(),"Bad credentials");
     }
 
     @Test(priority = 4)
@@ -75,7 +100,16 @@ public class LogInTest extends TestBase
         logIn.enterPassword(validPassword);
         logIn.clickLogInButton();
 
-        assertEquals("http://localhost:4200/login", driver.getCurrentUrl());
+        try
+        {
+            logIn.waitForSnackBarToAppear();
+        }
+        catch (TimeoutException ex)
+        {
+            Assert.fail("Timeout!");
+        }
+
+        assertEquals(logIn.getSnackBarText(),"Bad credentials");
     }
 
     @Test(priority = 5)
@@ -89,7 +123,8 @@ public class LogInTest extends TestBase
         logIn.enterPassword(wrongPassword);
         logIn.clickLogInButton();
 
-        try {
+        try
+        {
             logIn.waitForSnackBarToAppear();
         }
         catch (TimeoutException ex)

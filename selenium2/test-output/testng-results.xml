@@ -1,21 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="1" passed="1" failed="0" skipped="0">
+<testng-results total="8" passed="7" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-02-08T17:06:59Z" name="Default suite" finished-at="2023-02-08T17:07:18Z" duration-ms="18349">
+  <suite started-at="2023-03-01T17:22:03Z" name="Default suite" finished-at="2023-03-01T17:23:19Z" duration-ms="76814">
     <groups>
     </groups>
-    <test started-at="2023-02-08T17:06:59Z" name="Default test" finished-at="2023-02-08T17:07:18Z" duration-ms="18349">
-      <class name="UberAppTim24.tests.DriverEndRideTest">
-        <test-method is-config="true" signature="initializeWebDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@1f75a668]" started-at="2023-02-08T17:06:58Z" name="initializeWebDriver" finished-at="2023-02-08T17:06:59Z" duration-ms="1081" status="PASS">
-        </test-method> <!-- initializeWebDriver -->
-        <test-method is-config="true" signature="loginPassengerMakeRideAndLogoutThenLoginDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@1f75a668]" started-at="2023-02-08T17:06:59Z" name="loginPassengerMakeRideAndLogoutThenLoginDriver" finished-at="2023-02-08T17:07:05Z" duration-ms="6096" status="PASS">
-        </test-method> <!-- loginPassengerMakeRideAndLogoutThenLoginDriver -->
-        <test-method signature="endRideHappyFlowTest()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@1f75a668]" started-at="2023-02-08T17:07:05Z" name="endRideHappyFlowTest" finished-at="2023-02-08T17:07:18Z" duration-ms="12243" status="PASS">
-        </test-method> <!-- endRideHappyFlowTest -->
-        <test-method is-config="true" signature="quitDriver()[pri:0, instance:UberAppTim24.tests.DriverEndRideTest@1f75a668]" started-at="2023-02-08T17:07:18Z" name="quitDriver" finished-at="2023-02-08T17:07:18Z" duration-ms="0" status="PASS">
-        </test-method> <!-- quitDriver -->
-      </class> <!-- UberAppTim24.tests.DriverEndRideTest -->
+    <test started-at="2023-03-01T17:22:03Z" name="Default test" finished-at="2023-03-01T17:23:19Z" duration-ms="76814">
+      <class name="UberAppTim24.tests.PassengerStartRideTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:03Z" name="setUp" finished-at="2023-03-01T17:22:03Z" duration-ms="913" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="addFavouriteRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:03Z" name="addFavouriteRideTest" finished-at="2023-03-01T17:22:09Z" duration-ms="5508" status="PASS">
+        </test-method> <!-- addFavouriteRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:09Z" name="tearDown" finished-at="2023-03-01T17:22:09Z" duration-ms="211" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:09Z" name="setUp" finished-at="2023-03-01T17:22:10Z" duration-ms="631" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="alreadyInRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:10Z" name="alreadyInRideTest" finished-at="2023-03-01T17:22:14Z" duration-ms="4299" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected:<uspešno kreirana vožnja!> but was:<Putnik stefanium@mail.com je vec u aktivnoj voznji>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected:<uspešno kreirana vožnja!> but was:<Putnik stefanium@mail.com je vec u aktivnoj voznji>
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:171)
+	at org.testng.Assert.assertEquals(Assert.java:181)
+	at UberAppTim24.tests.PassengerStartRideTest.alreadyInRideTest(PassengerStartRideTest.java:367)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+        </test-method> <!-- alreadyInRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:14Z" name="tearDown" finished-at="2023-03-01T17:22:15Z" duration-ms="456" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:15Z" name="setUp" finished-at="2023-03-01T17:22:15Z" duration-ms="632" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="createScheduledRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:15Z" name="createScheduledRideTest" finished-at="2023-03-01T17:22:27Z" duration-ms="11938" status="PASS">
+        </test-method> <!-- createScheduledRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:27Z" name="tearDown" finished-at="2023-03-01T17:22:27Z" duration-ms="126" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:27Z" name="setUp" finished-at="2023-03-01T17:22:28Z" duration-ms="632" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="linkUsersTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:28Z" name="linkUsersTest" finished-at="2023-03-01T17:22:41Z" duration-ms="12598" status="PASS">
+        </test-method> <!-- linkUsersTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:41Z" name="tearDown" finished-at="2023-03-01T17:22:41Z" duration-ms="156" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:41Z" name="setUp" finished-at="2023-03-01T17:22:41Z" duration-ms="630" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="markBabiesAndPetsInRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:41Z" name="markBabiesAndPetsInRideTest" finished-at="2023-03-01T17:22:47Z" duration-ms="5816" status="PASS">
+        </test-method> <!-- markBabiesAndPetsInRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:47Z" name="tearDown" finished-at="2023-03-01T17:22:47Z" duration-ms="145" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:47Z" name="setUp" finished-at="2023-03-01T17:22:48Z" duration-ms="640" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="selectLocationsByClickingOnMapTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:22:48Z" name="selectLocationsByClickingOnMapTest" finished-at="2023-03-01T17:23:00Z" duration-ms="12476" status="PASS">
+        </test-method> <!-- selectLocationsByClickingOnMapTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:00Z" name="tearDown" finished-at="2023-03-01T17:23:01Z" duration-ms="158" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:01Z" name="setUp" finished-at="2023-03-01T17:23:01Z" duration-ms="645" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="selectVehicleTypeRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:01Z" name="selectVehicleTypeRideTest" finished-at="2023-03-01T17:23:06Z" duration-ms="5043" status="PASS">
+        </test-method> <!-- selectVehicleTypeRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:06Z" name="tearDown" finished-at="2023-03-01T17:23:06Z" duration-ms="118" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:06Z" name="setUp" finished-at="2023-03-01T17:23:07Z" duration-ms="630" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="simpleCreateRideTest()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:07Z" name="simpleCreateRideTest" finished-at="2023-03-01T17:23:19Z" duration-ms="12282" status="PASS">
+        </test-method> <!-- simpleCreateRideTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:UberAppTim24.tests.PassengerStartRideTest@2931522b]" started-at="2023-03-01T17:23:19Z" name="tearDown" finished-at="2023-03-01T17:23:19Z" duration-ms="115" status="PASS">
+        </test-method> <!-- tearDown -->
+      </class> <!-- UberAppTim24.tests.PassengerStartRideTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
